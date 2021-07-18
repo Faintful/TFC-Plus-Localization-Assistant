@@ -1,7 +1,5 @@
 import org.junit.jupiter.api.Test;
 
-import java.util.Scanner;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class LocalizationTest {
@@ -10,7 +8,7 @@ class LocalizationTest {
     @Test
     public void didYouEnterAnObject(){
         //arrange
-        Prompter prompter = new Prompter(() -> "Test data as if from user", (str) -> {});
+        Prompter prompter = new Prompter((str) -> {}, () -> "Test data as if from user");
         Localization inputFile = new Localization(prompter);
         //act
         inputFile.setInput(0);
@@ -23,7 +21,7 @@ class LocalizationTest {
     public void theUserIsPromptedForAnInput() {
         //arrange
         //act
-        Localization inputFile = new Localization(new Prompter(() -> "Test data as if from user", (str) -> {}));
+        Localization inputFile = new Localization(new Prompter((str) -> {}, () -> "Test data as if from user"));
         //assess
         assertEquals("Test data as if from user", inputFile.getInput());
     }
