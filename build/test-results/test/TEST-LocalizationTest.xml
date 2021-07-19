@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="LocalizationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-07-18T15:01:53" hostname="SKYE-PC" time="0.021">
+<testsuite name="LocalizationTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2021-07-19T14:32:01" hostname="SKYE-PC" time="0.019">
   <properties/>
-  <testcase name="theUserIsPromptedForAnInput()" classname="LocalizationTest" time="0.021"/>
+  <testcase name="theUserIsPromptedForAnInput()" classname="LocalizationTest" time="0.019"/>
   <system-out><![CDATA[Please enter an input:
 ]]></system-out>
   <system-err><![CDATA[]]></system-err>

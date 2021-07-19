@@ -1,16 +1,20 @@
 public class Localization {
 
-    private Object userInput;
+    private String userInput;
 
     public Localization(Prompter prompter) {
         setInput(prompter.promptForInput());
     }
 
-    public Object getInput() {
+    public String getInput() {
         return userInput;
     }
 
-    public void setInput(Object userInput) {
+    public void setInput(String userInput) {
         this.userInput = userInput;
+    }
+
+    public boolean verifyInputFile(String input) {
+        return true;
     }
 }

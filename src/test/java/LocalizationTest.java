@@ -4,14 +4,15 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class LocalizationTest {
 
-    //TODO: This test must ensure that the app has received an object as an input
+    //TODO: This test must ensure that the app has received a String as an input
     @Test
     public void didYouEnterAnObject(){
         //arrange
-        Prompter prompter = new Prompter((str) -> {}, () -> "Test data as if from user");
+        //FIXME: "Test data as if from user" isn't necessary. Make test more concise.
+        Prompter prompter = new Prompter((str) -> {}, () -> "Test");
         Localization inputFile = new Localization(prompter);
         //act
-        inputFile.setInput(0);
+        inputFile.setInput("This is a string");
         //assess
         assertNotNull(inputFile.getInput());
     }
@@ -21,8 +22,18 @@ class LocalizationTest {
     public void theUserIsPromptedForAnInput() {
         //arrange
         //act
-        Localization inputFile = new Localization(new Prompter((str) -> {}, () -> "Test data as if from user"));
+        Localization inputFile = new Localization(new Prompter((str) -> {System.out.println("Please enter an input:");}, () -> "This is a user generated input"));
         //assess
-        assertEquals("Test data as if from user", inputFile.getInput());
+        assertNotNull(inputFile.getInput());
+    }
+
+    //TODO: This next test must ensure that the input the the user has entered is a valid path for a .lang file
+    @Test
+    public void doesTheEnteredPathEndWithDotLang() {
+        //arrange
+        Localization inputFile = new Localization(new Prompter((str) -> {}, () -> "This is a user generated input"));
+        //act
+        //assess
+        assertTrue(inputFile.verifyInputFile(inputFile.getInput()));
     }
 }
