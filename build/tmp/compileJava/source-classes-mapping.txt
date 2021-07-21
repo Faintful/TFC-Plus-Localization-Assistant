@@ -1,6 +1,6 @@
-Localization.java
- Localization
 Prompter.java
  Prompter
+Localization.java
+ Localization
 Main.java
  Main

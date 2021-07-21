@@ -31,9 +31,9 @@ class LocalizationTest {
     @Test
     public void doesTheEnteredPathEndWithDotLang() {
         //arrange
-        Localization inputFile = new Localization(new Prompter((str) -> {}, () -> "This is a user generated input"));
+        Localization inputFile = new Localization(new Prompter((str) -> {}, () -> "C:\\Users\\Skye\\IdeaProjects\\TFC+ Localization Assistant\\src\\main\\resources\\it_IT.lang"));
         //act
         //assess
-        assertTrue(inputFile.verifyInputFile(inputFile.getInput()));
+        assertTrue(inputFile.verifyInputFileFormat(inputFile.getInput()));
     }
 }
