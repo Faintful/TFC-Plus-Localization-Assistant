@@ -29,7 +29,7 @@ public class Localization {
         return matcher.matches();
     }
 
-    private boolean isValidPath(String input) {
-        return new File(input).exists();
+    private boolean isValidPath(String path) {
+        return new File(path).exists();
     }
 }
