@@ -8,7 +8,6 @@ class LocalizationTest {
     @Test
     public void didYouEnterAnObject(){
         //arrange
-        //FIXME: "Test data as if from user" isn't necessary. Make test more concise.
         Prompter prompter = new Prompter((str) -> {}, () -> "Test");
         Localization inputFile = new Localization(prompter);
         //act
@@ -34,6 +33,6 @@ class LocalizationTest {
         Localization inputFile = new Localization(new Prompter((str) -> {}, () -> "C:\\Users\\Skye\\IdeaProjects\\TFC+ Localization Assistant\\src\\main\\resources\\it_IT.lang"));
         //act
         //assess
-        assertTrue(inputFile.verifyInputFileFormat(inputFile.getInput()));
+        assertTrue(inputFile.isValidFile(inputFile.getInput()));
     }
 }

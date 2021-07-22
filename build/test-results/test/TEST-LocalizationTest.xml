@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="LocalizationTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2021-07-21T20:07:18" hostname="SKYE-PC" time="0.023">
+<testsuite name="LocalizationTest" tests="1" skipped="0" failures="1" errors="0" timestamp="2021-07-22T17:18:52" hostname="SKYE-PC" time="0.026">
   <properties/>
-  <testcase name="doesTheEnteredPathEndWithDotLang()" classname="LocalizationTest" time="0.023">
+  <testcase name="doesTheEnteredPathEndWithDotLang()" classname="LocalizationTest" time="0.026">
     <failure message="org.opentest4j.AssertionFailedError: expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;true&gt; but was: &lt;false&gt;
 	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
 	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:40)
 	at org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:35)
 	at org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:162)
-	at LocalizationTest.doesTheEnteredPathEndWithDotLang(LocalizationTest.java:37)
+	at LocalizationTest.doesTheEnteredPathEndWithDotLang(LocalizationTest.java:36)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

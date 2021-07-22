@@ -19,11 +19,17 @@ public class Localization {
         this.userInput = userInput;
     }
 
-    //FIXME: This method is doing two things at once. Make them into their own methods and allow this method to implement both.
-    public boolean verifyInputFileFormat(String input) {
-        Pattern pattern = Pattern.compile("^.*(.lang)$");
-        Matcher matcher = pattern.matcher(input);
-        file = new File(input);
-        return file.exists() && matcher.matches();
+    public boolean isValidFile(String input) {
+        return isValidPath(input) && isValidFileFormat(input);
         }
+
+    private boolean isValidFileFormat(String path) {
+        Pattern pattern = Pattern.compile("^.*(.lang)$");
+        Matcher matcher = pattern.matcher(path);
+        return matcher.matches();
     }
+
+    private boolean isValidPath(String input) {
+        return new File(input).exists();
+    }
+}
