@@ -1,3 +1,5 @@
+package com.github.faintful.localizer;
+
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 

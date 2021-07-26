@@ -1,3 +1,5 @@
+package com.github.faintful.localizer;
+
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -26,9 +28,29 @@ class LocalizationTest {
         assertNotNull(inputFile.getInput());
     }
 
-    //TODO: This next test must ensure that the input the the user has entered is a valid path for a .lang file
+    //TODO: This next test must ensure that the input that the user has entered is a path that does not throw an exception
     @Test
-    public void doesTheEnteredPathEndWithDotLang() {
+    public void ayy() {
+        //arrange
+        Localization inputFile = new Localization(new Prompter((str) -> {}, () -> "C:\\Users\\Skye\\IdeaProjects\\TFC+ Localization Assistant\\src\\main\\resources\\it_IT.lang"));
+        //act
+        //assess
+        assertTrue(inputFile.isValidFile(inputFile.getInput()));
+    }
+
+    //TODO: This next test must ensure that the input that the user has entered is a string with valid characters
+    @Test
+    public void ayyLmao() {
+        //arrange
+        Localization inputFile = new Localization(new Prompter((str) -> {}, () -> "C:\\Users\\Skye\\IdeaProjects\\TFC+ Localization Assistant\\src\\main\\resources\\it_IT.lang"));
+        //act
+        //assess
+        assertTrue(inputFile.isValidFile(inputFile.getInput()));
+    }
+
+    //TODO: This next test must ensure that the input that the user has entered is a valid path for a .lang file
+    @Test
+    public void isItAValidFileExtension() {
         //arrange
         Localization inputFile = new Localization(new Prompter((str) -> {}, () -> "C:\\Users\\Skye\\IdeaProjects\\TFC+ Localization Assistant\\src\\main\\resources\\it_IT.lang"));
         //act

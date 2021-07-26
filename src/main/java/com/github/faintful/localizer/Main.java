@@ -1,3 +1,5 @@
+package com.github.faintful.localizer;
+
 import java.util.Scanner;
 
 public class Main {

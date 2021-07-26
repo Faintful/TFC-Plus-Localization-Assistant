@@ -1,2 +1,2 @@
-LocalizationTest.java
- LocalizationTest
+com/github/faintful/localizer/LocalizationTest.java
+ com.github.faintful.localizer.LocalizationTest
