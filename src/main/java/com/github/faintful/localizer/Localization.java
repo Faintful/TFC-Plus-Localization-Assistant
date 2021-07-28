@@ -29,17 +29,17 @@ public class Localization {
         return isValidPath(input) && isValidExtension(input);
         }
 
-    private boolean isValidExtension(String path) {
+    public boolean isValidExtension(String path) {
         Pattern pattern = Pattern.compile("^.*(.lang)$");
         Matcher matcher = pattern.matcher(path);
         return matcher.matches();
     }
 
     public boolean isValidPath(String path) {
-        return validatePathCharacters(path).isPresent();
+        return verifyPath(path).isPresent();
     }
 
-    private Optional<Path> validatePathCharacters(String path) {
+    public Optional<Path> verifyPath(String path) {
         try {
             return Optional.of(Paths.get(path));
         } catch (InvalidPathException exception) {

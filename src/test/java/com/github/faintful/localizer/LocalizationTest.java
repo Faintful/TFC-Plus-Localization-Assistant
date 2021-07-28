@@ -20,7 +20,7 @@ class LocalizationTest {
 
     //TODO: This test must ensure that the input that the app has received is a user-prompted input
     @Test
-    public void theUserIsPromptedForAnInput() {
+    public void isItAUserPromptedInput() {
         //arrange
         //act
         Localization inputFile = new Localization(new Prompter((str) -> {System.out.println("Please enter an input:");}, () -> "This is a user generated input"));
@@ -28,33 +28,23 @@ class LocalizationTest {
         assertNotNull(inputFile.getInput());
     }
 
-    //TODO: This next test must ensure that the input that the user has entered is a path that does not throw an exception
+    //TODO: This next test must ensure that the input that the user has entered is a path containing valid characters
     @Test
-    public void ayy() {
+    public void isItAValidPath() {
         //arrange
         Localization inputFile = new Localization(new Prompter((str) -> {}, () -> "C:\\Users\\Skye\\IdeaProjects\\TFC+ Localization Assistant\\src\\main\\resources\\it_IT.lang"));
         //act
         //assess
-        assertTrue(inputFile.isValidFile(inputFile.getInput()));
+        assertTrue(inputFile.verifyPath(inputFile.getInput()).isPresent());
     }
 
-    //TODO: This next test must ensure that the input that the user has entered is a string with valid characters
-    @Test
-    public void ayyLmao() {
-        //arrange
-        Localization inputFile = new Localization(new Prompter((str) -> {}, () -> "C:\\Users\\Skye\\IdeaProjects\\TFC+ Localization Assistant\\src\\main\\resources\\it_IT.lang"));
-        //act
-        //assess
-        assertTrue(inputFile.isValidFile(inputFile.getInput()));
-    }
-
-    //TODO: This next test must ensure that the input that the user has entered is a valid path for a .lang file
+    //TODO: This next test must ensure that the input that the user has entered is a valid path for a .lang file extension
     @Test
     public void isItAValidFileExtension() {
         //arrange
         Localization inputFile = new Localization(new Prompter((str) -> {}, () -> "C:\\Users\\Skye\\IdeaProjects\\TFC+ Localization Assistant\\src\\main\\resources\\it_IT.lang"));
         //act
         //assess
-        assertTrue(inputFile.isValidFile(inputFile.getInput()));
+        assertTrue(inputFile.isValidExtension(inputFile.getInput()));
     }
 }
