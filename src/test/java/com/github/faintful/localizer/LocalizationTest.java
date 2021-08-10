@@ -23,7 +23,7 @@ class LocalizationTest {
     public void isItAUserPromptedInput() {
         //arrange
         //act
-        Localization inputFile = new Localization(new Prompter((str) -> {System.out.println("Please enter an input:");}, () -> "This is a user generated input"));
+        Localization inputFile = new Localization(new Prompter(System.out::println, () -> "This is a user generated input"));
         //assess
         assertNotNull(inputFile.getInput());
     }

@@ -13,6 +13,8 @@ public class Localization {
     File file;
     private String userInput;
 
+    @Deprecated
+    //Might create a third class in the future that fulfills the function inside the scope of this constructor
     public Localization(Prompter prompter) {
         setInput(prompter.promptForInput());
     }

@@ -9,8 +9,8 @@ public class Prompter {
     private final Supplier<String> reader;
 
     public Prompter(Consumer<String> writer, Supplier<String> reader) {
-        this.reader = reader;
         this.writer = writer;
+        this.reader = reader;
     }
 
     public String promptForInput() {

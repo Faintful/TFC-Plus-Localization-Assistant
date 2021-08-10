@@ -1,6 +1,6 @@
 com/github/faintful/localizer/Prompter.java
  com.github.faintful.localizer.Prompter
-com/github/faintful/localizer/Main.java
- com.github.faintful.localizer.Main
 com/github/faintful/localizer/Localization.java
  com.github.faintful.localizer.Localization
+com/github/faintful/localizer/Main.java
+ com.github.faintful.localizer.Main
