@@ -38,6 +38,17 @@ class LocalizationTest {
         assertTrue(inputFile.verifyPath(inputFile.getInput()).isPresent());
     }
 
+    //TODO: This test must ensure that in the eventuality that an exception is thrown by the above test, the exception is recorded to a class variable to be used by the Prompter class in the future
+    @Test
+    public void isTheExceptionSaved() {
+        //arrange
+        Localization inputFile = new Localization(new Prompter((str) -> {}, () -> "Invalid characters : ; * . ,"));
+        //act
+        inputFile.saveException(inputFile.getInput());
+        //assess
+        assertNotNull(inputFile.getInvalidPathException());
+    }
+
     //TODO: This next test must ensure that the input that the user has entered is a valid path for a .lang file extension
     @Test
     public void isItAValidFileExtension() {

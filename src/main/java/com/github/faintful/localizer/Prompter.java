@@ -17,4 +17,14 @@ public class Prompter {
         writer.accept("Please enter an input:");
         return reader.get();
     }
+
+    public void promptInvalidInput(Localization localization) {
+        System.out.println("\n" + "Invalid character at index " + Integer.sum(localization.invalidPathException.getIndex(), 1) + "\n" +
+                "Your input was: " + "\"" + localization.getInput() + "\"" + "\n" +
+                "Please exclude invalid characters from your input and try again");
+    }
+
+    public void promptInvalidExtension() {
+
+    }
 }
