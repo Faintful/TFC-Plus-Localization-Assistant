@@ -3,17 +3,19 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class LocalizationTest {
+    // Extracted variable since we don't want to mess up the test
+    // by writing the string differently by mistake in 2-3 places
+    final static String expectedValue = "Test data as if from user";
 
     //TODO: This test must ensure that the app has received an object as an input
     @Test
     public void didYouEnterAnObject(){
         //arrange
-        Prompter prompter = new Prompter((str) -> {}, () -> "Test data as if from user");
-        Localization inputFile = new Localization(prompter);
+        Prompter prompter = Prompter.readOnly(expectedValue);
+        String result = Localization.fromPrompter(prompter);
         //act
-        inputFile.setInput(0);
         //assess
-        assertNotNull(inputFile.getInput());
+        assertNotNull(result);
     }
 
     //TODO: This test must ensure that the input that the app has received is a user-prompted input
@@ -21,8 +23,8 @@ class LocalizationTest {
     public void theUserIsPromptedForAnInput() {
         //arrange
         //act
-        Localization inputFile = new Localization(new Prompter((str) -> {}, () -> "Test data as if from user"));
+        String returnedValue = Localization.fromPrompter(Prompter.readOnly(expectedValue));
         //assess
-        assertEquals("Test data as if from user", inputFile.getInput());
+        assertEquals(expectedValue, returnedValue);
     }
 }
