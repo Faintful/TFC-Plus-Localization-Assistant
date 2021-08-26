@@ -13,6 +13,7 @@ public class Localization {
     File file;
 
     InvalidPathException invalidPathException = null;
+    IllegalArgumentException illegalArgumentException = null;
     Path path = null;
 
     private String userInput;
@@ -35,33 +36,33 @@ public class Localization {
         this.userInput = userInput;
     }
 
-    public boolean isValidFile(String input) {
-        return isValidPath(input) && isValidExtension(input);
+    public boolean isValidFile(String input, String message) {
+        return isValidPath(input) && isValidExtension(input, message);
     }
 
-    public boolean isValidExtension(String path) {
+    public boolean isValidExtension(String path, String message) {
         Pattern pattern = Pattern.compile("^.*(.lang)$");
         Matcher matcher = pattern.matcher(path);
-        return matcher.matches();
+        return saveIllegalArgumentException(path, message, matcher.matches());
+    }
+
+    public boolean saveIllegalArgumentException(String path, String message, boolean bool) {
+        try {
+            if (bool) {
+                throw new IllegalArgumentException(message);
+            }
+        } catch (IllegalArgumentException illegalArgumentException) {
+            this.illegalArgumentException = illegalArgumentException;
+            return false;
+        }
+        return true;
     }
 
     public boolean isValidPath(String path) {
-        return verifyPath(path).isPresent();
+        return Optional.ofNullable(saveInvalidPathException(path)).isPresent();
     }
 
-/*    public Optional<Path> verifyPath(String path) {
-        try {
-            return Optional.of(Paths.get(path));
-        } catch (InvalidPathException exception) {
-            return Optional.empty();
-        }
-    }*/
-
-    public Optional<Path> verifyPath(String path) {
-        return Optional.ofNullable(saveException(path));
-    }
-
-    public Path saveException(String path) {
+    public Path saveInvalidPathException(String path) {
         try {
             return Paths.get(path);
         } catch (InvalidPathException invalidPathException) {
@@ -69,11 +70,6 @@ public class Localization {
             return null;
         }
     }
-/*
-    private Path returnPath(String path) {
-            saveException(path);
-            return this.path;
-    }*/
 
     @Deprecated
     private boolean canCreateFile(String path) {

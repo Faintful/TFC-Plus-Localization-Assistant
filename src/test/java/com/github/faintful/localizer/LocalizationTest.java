@@ -35,7 +35,7 @@ class LocalizationTest {
         Localization inputFile = new Localization(new Prompter((str) -> {}, () -> "C:\\Users\\Skye\\IdeaProjects\\TFC+ Localization Assistant\\src\\main\\resources\\it_IT.lang"));
         //act
         //assess
-        assertTrue(inputFile.verifyPath(inputFile.getInput()).isPresent());
+        assertTrue(inputFile.isValidPath(inputFile.getInput()));
     }
 
     //TODO: This test must ensure that in the eventuality that an exception is thrown by the above test, the exception is recorded to a class variable to be used by the Prompter class in the future
@@ -44,7 +44,7 @@ class LocalizationTest {
         //arrange
         Localization inputFile = new Localization(new Prompter((str) -> {}, () -> "Invalid characters : ; * . ,"));
         //act
-        inputFile.saveException(inputFile.getInput());
+        inputFile.saveInvalidPathException(inputFile.getInput());
         //assess
         assertNotNull(inputFile.getInvalidPathException());
     }
@@ -56,6 +56,16 @@ class LocalizationTest {
         Localization inputFile = new Localization(new Prompter((str) -> {}, () -> "C:\\Users\\Skye\\IdeaProjects\\TFC+ Localization Assistant\\src\\main\\resources\\it_IT.lang"));
         //act
         //assess
-        assertTrue(inputFile.isValidExtension(inputFile.getInput()));
+        assertTrue(inputFile.isValidExtension(inputFile.getInput(), "Dinky Wink"));
+    }
+
+    //TODO: This next test must ensure that the validateExtension() method throws an Illegal Argument Exception in the case that it returns false, and that the exception is saved as a class variable.
+    @Test
+    public void testTestTest() {
+        //arrange
+        Localization inputFile = new Localization(new Prompter((str) -> {}, () -> "C:\\Users\\Skye\\IdeaProjects\\TFC+ Localization Assistant\\src\\main\\resources\\it_IT.lang"));
+        //act
+        //assess
+
     }
 }
