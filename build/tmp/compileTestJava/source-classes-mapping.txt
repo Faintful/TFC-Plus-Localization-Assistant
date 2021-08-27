@@ -1,4 +1,4 @@
-com/github/faintful/localizer/PrompterTest.java
- com.github.faintful.localizer.PrompterTest
 com/github/faintful/localizer/LocalizationTest.java
  com.github.faintful.localizer.LocalizationTest
+com/github/faintful/localizer/PrompterTest.java
+ com.github.faintful.localizer.PrompterTest

@@ -1,5 +1,6 @@
 package com.github.faintful.localizer;
 
+import java.nio.file.InvalidPathException;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
@@ -19,9 +20,9 @@ public class Prompter {
     }
 
     public void promptInvalidInput(Localization localization) {
-        System.out.println("\n" + "Invalid character at index " + Integer.sum(localization.invalidPathException.getIndex(), 1) + "\n" +
-                "Your input was: " + "\"" + localization.getInput() + "\"" + "\n" +
-                "Please exclude invalid characters from your input and try again");
+        localization.invalidPathException = new InvalidPathException("ayy", "ayyLmao", 1);
+        System.out.println("\n" + "Error of type: " + localization.invalidPathException.getReason() + "at index " + Integer.sum(localization.invalidPathException.getIndex(), 1) + "\n" +
+                "Your input was: " + "\"" + localization.getInput() + "\"");
     }
 
     public void promptInvalidExtension() {

@@ -43,12 +43,12 @@ public class Localization {
     public boolean isValidExtension(String path, String message) {
         Pattern pattern = Pattern.compile("^.*(.lang)$");
         Matcher matcher = pattern.matcher(path);
-        return saveIllegalArgumentException(path, message, matcher.matches());
+        return saveIsValidExtensionException(path, message, matcher.matches());
     }
 
-    public boolean saveIllegalArgumentException(String path, String message, boolean bool) {
+    public boolean saveIsValidExtensionException(String path, String message, boolean bool) {
         try {
-            if (bool) {
+            if (!bool) {
                 throw new IllegalArgumentException(message);
             }
         } catch (IllegalArgumentException illegalArgumentException) {
@@ -59,10 +59,10 @@ public class Localization {
     }
 
     public boolean isValidPath(String path) {
-        return Optional.ofNullable(saveInvalidPathException(path)).isPresent();
+        return Optional.ofNullable(saveIsValidPathException(path)).isPresent();
     }
 
-    public Path saveInvalidPathException(String path) {
+    public Path saveIsValidPathException(String path) {
         try {
             return Paths.get(path);
         } catch (InvalidPathException invalidPathException) {

@@ -44,7 +44,7 @@ class LocalizationTest {
         //arrange
         Localization inputFile = new Localization(new Prompter((str) -> {}, () -> "Invalid characters : ; * . ,"));
         //act
-        inputFile.saveInvalidPathException(inputFile.getInput());
+        inputFile.saveIsValidPathException(inputFile.getInput());
         //assess
         assertNotNull(inputFile.getInvalidPathException());
     }
@@ -59,13 +59,14 @@ class LocalizationTest {
         assertTrue(inputFile.isValidExtension(inputFile.getInput(), "Dinky Wink"));
     }
 
-    //TODO: This next test must ensure that the validateExtension() method throws an Illegal Argument Exception in the case that it returns false, and that the exception is saved as a class variable.
+    //TODO: This next test is for a method that must ensure that the isValidExtension() method throws an Illegal Argument Exception in the case that it returns false, and that the exception is saved as a class variable.
+    //TODO: Test is not throwing as it should. Make this work!!!
     @Test
     public void testTestTest() {
         //arrange
         Localization inputFile = new Localization(new Prompter((str) -> {}, () -> "C:\\Users\\Skye\\IdeaProjects\\TFC+ Localization Assistant\\src\\main\\resources\\it_IT.lang"));
         //act
         //assess
-
+        assertThrows(IllegalArgumentException.class, () -> inputFile.saveIsValidExtensionException(inputFile.getInput(), "Dinky Wink", false));
     }
 }
