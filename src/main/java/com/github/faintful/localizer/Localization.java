@@ -20,8 +20,8 @@ public class Localization {
 
 //    @Deprecated
     //Might create a third class in the future that fulfills the function inside the scope of this constructor
-    public Localization(Prompter prompter) {
-        setInput(prompter.promptForInput());
+    public Localization(InputPrompter inputPrompter) {
+        setInput(inputPrompter.promptForInput());
     }
 
     public String getInput() {

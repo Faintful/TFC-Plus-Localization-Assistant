@@ -5,12 +5,11 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class PrompterTest {
+public class InputPrompterTest {
 
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
@@ -30,7 +29,7 @@ public class PrompterTest {
     public void isItAUserPromptedInput() {
         //arrange
         //act
-        Localization inputFile = new Localization(new Prompter((str) -> {System.out.println("Please enter an input:");}, () -> "This is a user generated input"));
+        Localization inputFile = new Localization(new InputPrompter((str) -> {System.out.println("Please enter an input:");}, () -> "This is a user generated input"));
         //assess
         assertEquals("Please enter an input:\r\n", outContent.toString());
     }
@@ -40,11 +39,11 @@ public class PrompterTest {
     @Test
     public void promptInvalidPath() {
         //arrange
-        Prompter prompter = new Prompter(System.out::println, () -> "This is a user generated input");
-        Localization inputFile = new Localization(prompter);
+        InputPrompter inputPrompter = new InputPrompter(System.out::println, () -> "This is a user generated input");
+        Localization inputFile = new Localization(inputPrompter);
         //act
         outContent.reset();
-        prompter.promptInvalidInput(inputFile);
+//        inputPrompter.promptInvalidInput(inputFile);
         //assess
         //TODO: Create method that displays the error message of the exception that was caught
         assertEquals("\nError of type: ayyLmaoat index 2\n" + "Your input was: \"This is a user generated input\"\r\n", outContent.toString());
@@ -54,7 +53,7 @@ public class PrompterTest {
     public void promptInvalidExtension() {
         //arrange
         //act
-        Localization inputFile = new Localization(new Prompter((str) -> {System.out.println("Please enter an input:");}, () -> "This is a user generated input"));
+        Localization inputFile = new Localization(new InputPrompter((str) -> {System.out.println("Please enter an input:");}, () -> "This is a user generated input"));
         //assess
         assertEquals("Please enter an input:\r\n", outContent.toString());
     }
@@ -63,7 +62,7 @@ public class PrompterTest {
     public void promptCannotCreateFile() {
         //arrange
         //act
-        Localization inputFile = new Localization(new Prompter((str) -> {System.out.println("Please enter an input:");}, () -> "This is a user generated input"));
+        Localization inputFile = new Localization(new InputPrompter((str) -> {System.out.println("Please enter an input:");}, () -> "This is a user generated input"));
         //assess
         assertEquals("Please enter an input:\r\n", outContent.toString());
     }

@@ -10,8 +10,8 @@ class LocalizationTest {
     @Test
     public void didYouEnterAnObject(){
         //arrange
-        Prompter prompter = new Prompter((str) -> {}, () -> "Test");
-        Localization inputFile = new Localization(prompter);
+        InputPrompter inputPrompter = new InputPrompter((str) -> {}, () -> "Test");
+        Localization inputFile = new Localization(inputPrompter);
         //act
         inputFile.setInput("This is a string");
         //assess
@@ -23,7 +23,7 @@ class LocalizationTest {
     public void isItAUserPromptedInput() {
         //arrange
         //act
-        Localization inputFile = new Localization(new Prompter(System.out::println, () -> "This is a user generated input"));
+        Localization inputFile = new Localization(new InputPrompter(System.out::println, () -> "This is a user generated input"));
         //assess
         assertNotNull(inputFile.getInput());
     }
@@ -32,17 +32,17 @@ class LocalizationTest {
     @Test
     public void isItAValidPath() {
         //arrange
-        Localization inputFile = new Localization(new Prompter((str) -> {}, () -> "C:\\Users\\Skye\\IdeaProjects\\TFC+ Localization Assistant\\src\\main\\resources\\it_IT.lang"));
+        Localization inputFile = new Localization(new InputPrompter((str) -> {}, () -> "C:\\Users\\Skye\\IdeaProjects\\TFC+ Localization Assistant\\src\\main\\resources\\it_IT.lang"));
         //act
         //assess
         assertTrue(inputFile.isValidPath(inputFile.getInput()));
     }
 
-    //TODO: This test must ensure that in the eventuality that an exception is thrown by the above test, the exception is recorded to a class variable to be used by the Prompter class in the future
+    //TODO: This test must ensure that in the eventuality that an exception is thrown by the above test, the exception is recorded to a class variable to be used by the InputPrompter class in the future
     @Test
     public void isTheExceptionSaved() {
         //arrange
-        Localization inputFile = new Localization(new Prompter((str) -> {}, () -> "Invalid characters : ; * . ,"));
+        Localization inputFile = new Localization(new InputPrompter((str) -> {}, () -> "Invalid characters : ; * . ,"));
         //act
         inputFile.saveIsValidPathException(inputFile.getInput());
         //assess
@@ -53,7 +53,7 @@ class LocalizationTest {
     @Test
     public void isItAValidFileExtension() {
         //arrange
-        Localization inputFile = new Localization(new Prompter((str) -> {}, () -> "C:\\Users\\Skye\\IdeaProjects\\TFC+ Localization Assistant\\src\\main\\resources\\it_IT.lang"));
+        Localization inputFile = new Localization(new InputPrompter((str) -> {}, () -> "C:\\Users\\Skye\\IdeaProjects\\TFC+ Localization Assistant\\src\\main\\resources\\it_IT.lang"));
         //act
         //assess
         assertTrue(inputFile.isValidExtension(inputFile.getInput(), "Dinky Wink"));
@@ -64,7 +64,7 @@ class LocalizationTest {
     @Test
     public void testTestTest() {
         //arrange
-        Localization inputFile = new Localization(new Prompter((str) -> {}, () -> "C:\\Users\\Skye\\IdeaProjects\\TFC+ Localization Assistant\\src\\main\\resources\\it_IT.lang"));
+        Localization inputFile = new Localization(new InputPrompter((str) -> {}, () -> "C:\\Users\\Skye\\IdeaProjects\\TFC+ Localization Assistant\\src\\main\\resources\\it_IT.lang"));
         //act
         //assess
         assertThrows(IllegalArgumentException.class, () -> inputFile.saveIsValidExtensionException(inputFile.getInput(), "Dinky Wink", false));
